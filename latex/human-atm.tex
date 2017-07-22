@@ -26,7 +26,7 @@ With the great widespread of usage ATMs, shortage of cash on them and of ATMs th
 
 \textit{HumanATM} is a project that, driven by the mentioned advantages of the blockchain technologies, solves the mentioned shortage problems that arose with the increase in use of ATMs. Similarly to how \textit{Uber} solves the commuting problem by allowing anyone to offer its service, \textit{HumanATM} attempts to solve the shortage of cash (caused by either shortage of cash on ATMs or ATMs themselves) by allowing cash transfer between any two bank clients. So, if a user is in need of cash, while another one has extra cash, the latter one can use \textit{HumanATM} to give it to the former, in exchange for tokens. This tokens will end up being exchanged for the same amount of money that was given (with an extra amount as a reward), but this can be in the future be extended for allowing transfer of tokens between users and even exchanging them for prizes.
 
-For allowing this \textit{Ethereum smart contracts} were used, so that all operations regarding token distribution, transfer and exchanging tokens for money are registered in the blockchain.
+For allowing, this \textit{Ethereum smart contracts} were used, so that all operations regarding token distribution, transfer and exchanging tokens for money are registered in the blockchain.
 
 \section{Implementation}
 
@@ -34,7 +34,7 @@ There are three user-related operations used in \textit{HumanATM}, which are: us
 
 \subsection{Credit and prize tokens}
 
-As different bank clients will fit into different profiles (due to yearly earnings, current savings, among other characteristics), the amount of cash that they should be allowed to \textit{"extract"} using \textit{HumanATM} will be different. In order to be able to register this, users will only be enabled to receive cash if they have proper authorization, which will be represented by having each user \textit{credit tokens}. So, when a certain user receives cash, this tokens are transfered to the previous owner of the cash. At this moment, the tokens will be \textit{prize tokens}, which can be later exchanged for money corresponding to the amount of cash transfered plus a reward.
+As different bank clients will fit into different profiles (due to yearly earnings, current savings, among other characteristics), the amount of cash that they should be allowed to \textit{"extract"} using \textit{HumanATM} will be different. In order to be able to register this, users will only be enabled to receive cash if they have proper authorization, which will be represented by having each user \textit{credit tokens}. So, when a certain user receives cash, this tokens are transfered to the previous owner of the cash. At this moment, the tokens become \textit{prize tokens}, which can be later exchanged for money corresponding to the amount of cash transfered plus a reward.
 
 So, as described in the example, \textit{credit tokens} can only be used for transferring to other users, while \textit{prize tokens} can only used for redeeming the money transfered plus the reward.
 
@@ -44,7 +44,7 @@ Both this tokens will be \textit{simpler ERC20}-compliant\footnote{EIP-179: http
 
 As described in the previous section, users are assigned \textit{credit tokens} (depending on their profile) which can later be used by them to receive cash from other bank clients. Due to this, registration of the users to the smart contract is needed, so that during this registration an initial set of \textit{credit tokens} is assigned to them.
 
-As operations are being carried out by the user, this initial credit is depleted, so a separate functionality was added so as to increase this credit. This could be implemented either automatically, be done periodically or upon request by the user.
+As operations are being carried out by the user, this initial credit is depleted, so a separate functionality was added so as to increase this credit. This service could be used either automatically, periodically or upon request by the user.
 
 As both operations involve changing critical user information, they can only be carried out by an authorized agent (the \textit{owner} of the contract).
 
@@ -56,17 +56,18 @@ As previously explained, the user giving the cash will receive prize tokens, whi
 
 \subsection{Accounts reconciliation}
 
-With the current functionalities (which could be easily extended in the future) prize tokens can only be used for exchanging for the money corresponding to the cash given plus the reward. This should be done periodically (twice per month for example), and the \textit{smart contract} should be able to return the number of tokens owned by each client (so as to be later used to determine the money to be given to the clients) and also take the prize tokens from them.
+With the current functionalities (which could be easily extended in the future) prize tokens can only be used for exchanging for the money corresponding to the cash given plus the reward. This should be done for all users periodically (twice per month for example), and the \textit{smart contract} should be able to return the number of tokens owned by each client (so as to be later used to determine the money to be given to the clients) and also take the prize tokens from them.
 
 Both this two operations should be done atomically, as if not the amounts own by the clients could change between them, resulting in invalid information being used.
-
-\section{Attack vectors} %Possible attacks
 
 \section{Future updates}
 
 \begin{itemize}
-\item Multi-signature with bank and user (TODO: define better what this is)
-\item Txs not paid by the user (so as to not require it to have ether for paying for tx execution)
+\item \textbf{Token transfer not being paid by the user:}
+
+	With the current implementation, the bank clients need to have ether in their account in order to be able to send the transactions for transferring tokens to other users. However, in the common scenario that the user only uses his \textit{Ethereum} account for this application, it would not have any ether available to pay for the transaction cost. For this reason, it is desirable for them to not be in charge of paying for this transactions.
+
+    One way this could be achieved is by having the backend (on the server) in charge of sending this transactions, which would do so upon receiving a message signed from the sender. This message should at least have the receiver of the tokens and the amounts transfered. However, if not done carefully this could introduce security problems such as a potential replay attack.
 \end{itemize}
 
 \end{document}

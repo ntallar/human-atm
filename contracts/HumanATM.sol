@@ -45,7 +45,7 @@ contract HumanATM is ERC20Basic, Ownable {
     }
 
     /**
-      * Adds initial supply credit tokens to the user
+      * Registers a new user, setting initial credit tokens for it
       *
       * @param user The new user to register
       * @param initialCredit The initial amount of tokens the user will have
@@ -135,7 +135,7 @@ contract HumanATM is ERC20Basic, Ownable {
     }
 
     /**
-      * Burns all the prize tokens and returns the prize tokens previously owned by each user
+      * Deletes all the prize tokens and returns the prize tokens previously owned by each user
       *
       * @return the address of the users with the prize tokens previously owned by each
       */
