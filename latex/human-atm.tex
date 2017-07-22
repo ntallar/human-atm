@@ -1,0 +1,72 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Human ATM}
+\author{???}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+With the great widespread of usage ATMs, shortage of cash on them and of ATMs themselves (such as in remote locations) has become a common problem. Also increasing in usage are blockchain-based technologies which is driven in part by the transparency and safeguard properties provided by them, allowing an easy and public audit of the operations being carried out. This technologies not only enable carrying out simple money transfer transactions but also decentralizing and increasing the transparency of code execution, as is the case with the \textit{Ethereum}\footnote{Ethereum website: https://www.ethereum.org/} cryptocurrency.
+
+\textit{HumanATM} is a project that, driven by the mentioned advantages of the blockchain technologies, solves the mentioned shortage problems that arose with the increase in use of ATMs. Similarly to how \textit{Uber} solves the commuting problem by allowing anyone to offer its service, \textit{HumanATM} attempts to solve the shortage of cash (caused by either shortage of cash on ATMs or ATMs themselves) by allowing cash transfer between any two bank clients. So, if a user is in need of cash, while another one has extra cash, the latter one can use \textit{HumanATM} to give it to the former, in exchange for tokens. This tokens will end up being exchanged for the same amount of money that was given (with an extra amount as a reward), but this can be in the future be extended for allowing transfer of tokens between users and even exchanging them for prizes.
+
+For allowing this \textit{Ethereum smart contracts} were used, so that all operations regarding token distribution, transfer and exchanging tokens for money are registered in the blockchain.
+
+\section{Implementation}
+
+There are three user-related operations used in \textit{HumanATM}, which are: user registration, token transfer and accounts reconciliation. In each of them tokens will be moved between or assigned to them, which will be of different categories: credit tokens or prize tokens.
+
+\subsection{Credit and prize tokens}
+
+As different bank clients will fit into different profiles (due to yearly earnings, current savings, among other characteristics), the amount of cash that they should be allowed to \textit{"extract"} using \textit{HumanATM} will be different. In order to be able to register this, users will only be enabled to receive cash if they have proper authorization, which will be represented by having each user \textit{credit tokens}. So, when a certain user receives cash, this tokens are transfered to the previous owner of the cash. At this moment, the tokens will be \textit{prize tokens}, which can be later exchanged for money corresponding to the amount of cash transfered plus a reward.
+
+So, as described in the example, \textit{credit tokens} can only be used for transferring to other users, while \textit{prize tokens} can only used for redeeming the money transfered plus the reward.
+
+Both this tokens will be \textit{simpler ERC20}-compliant\footnote{EIP-179: https://github.com/ethereum/EIPs/issues/179}, so they will follow the specified interface.
+
+\subsection{User registration and credit increase}
+
+As described in the previous section, users are assigned \textit{credit tokens} (depending on their profile) which can later be used by them to receive cash from other bank clients. Due to this, registration of the users to the smart contract is needed, so that during this registration an initial set of \textit{credit tokens} is assigned to them.
+
+As operations are being carried out by the user, this initial credit is depleted, so a separate functionality was added so as to increase this credit. This could be implemented either automatically, be done periodically or upon request by the user.
+
+As both operations involve changing critical user information, they can only be carried out by an authorized agent (the \textit{owner} of the contract).
+
+\subsection{Token transfer}
+
+Whenever two bank clients decide to exchange cash for tokens, this operation is done using the smart contract, not only for correct token management but also for registering that this transfer took place. This enables any of the parties that took part of the transfer to audit it and to use it as a receipt of the transfer (possibly to use it as part of a complaint in case of any problem).
+
+As previously explained, the user giving the cash will receive prize tokens, while credit tokens will be subtracted from the user receiving the cash.
+
+\subsection{Accounts reconciliation}
+
+With the current functionalities (which could be easily extended in the future) prize tokens can only be used for exchanging for the money corresponding to the cash given plus the reward. This should be done periodically (twice per month for example), and the \textit{smart contract} should be able to return the number of tokens owned by each client (so as to be later used to determine the money to be given to the clients) and also take the prize tokens from them.
+
+Both this two operations should be done atomically, as if not the amounts own by the clients could change between them, resulting in invalid information being used.
+
+\section{Attack vectors} %Possible attacks
+
+\section{Future updates}
+
+\begin{itemize}
+\item Multi-signature with bank and user (TODO: define better what this is)
+\item Txs not paid by the user (so as to not require it to have ether for paying for tx execution)
+\end{itemize}
+
+\end{document}

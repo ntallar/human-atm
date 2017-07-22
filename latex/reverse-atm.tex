@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{ReverseATM}
+\author{???}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+With the great widespread of usage ATMs, shortage of cash on them and costs of logistics of filling them with cash has become a common problem. Also increasing in usage are blockchain-based technologies which is driven in part by the transparency and safeguard properties provided by them, allowing an easy and public audit of the operations being carried out. This technologies not only enable carrying out simple money transfer transactions but also decentralizing and increasing the transparency of code execution, as is the case with the \textit{Ethereum}\footnote{https://www.ethereum.org/} cryptocurrency.
+
+\textit{ReverseATM} is a project that, driven by the mentioned advantages of the blockchain technologies, attempts to solve or at least decrease the mentioned shortage problems that arose with the increase in use of ATMs. It does so by allowing users to recharge the ATMs, and being rewarded for doing so which will in turn cause a decrease in the costs of the banks for doing so (due to a decrease in the frequency needed for this recharges). So, if a bank client has extra cash, he can go to a nearby ATM, deposit the cash in it, and receiving tokens for doing so. This tokens will end up being exchanged for the same amount of money that was given (with an extra amount as a reward), but this can be in the future be extended for allowing transfer of tokens between users and even exchanging them for prizes.
+
+For allowing this \textit{Ethereum smart contracts} were used, so that all operations regarding token distribution, transfer and exchanging tokens for money are registered in the blockchain.
+
+\section{Implementation}
+
+There are two user-related operations used in \textit{ReverseATM}, which are: rewarding deposit with tokens and accounts reconciliation.
+
+\subsection{Rewarding with tokens}
+
+As mentioned briefly in the previous section, bank clients will be rewarded for depositing cash to the ATMs with tokens. Only an authorized account (the \textit{owner} of the contract) will be enabled to do this deposit, so as to generate tokens in a controlled way.
+
+\subsection{Accounts reconciliation}
+
+With the current functionalities (which could be easily extended in the future) tokens can only be used for exchanging for the money corresponding to the cash given plus the reward. This should be done periodically (twice per month for example), and the \textit{smart contract} should be able to return the number of tokens owned by each client (so as to be later used to determine the money to be given to the clients) and also take the prize tokens from them.
+
+Both this two operations should be done atomically, as if not the amounts own by the clients could change between them, resulting in invalid information being used.
+
+
+\section{Attack vectors} %Possible attacks
+
+\section{Future updates}
+
+\end{document}
