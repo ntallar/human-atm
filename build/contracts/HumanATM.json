@@ -1,0 +1,373 @@
+{
+  "contract_name": "HumanATM",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "userAwardedTokens",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "userCredit",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "distributedSupply",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "accountsReconciliation",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        },
+        {
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "creditExtension",
+          "type": "uint256"
+        }
+      ],
+      "name": "addCredit",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "supplyExtension",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseSupply",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "isRegistered",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "name": "initialCredit",
+          "type": "uint256"
+        }
+      ],
+      "name": "registerUser",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "initialTotalSupply",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "initialCredit",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewUser",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "creditExtension",
+          "type": "uint256"
+        }
+      ],
+      "name": "UserCreditIncrease",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "totalAmountReconciled",
+          "type": "uint256"
+        }
+      ],
+      "name": "ReconciledAccounts",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000c57fe5b6040516020806109d983398101604052515b5b60018054600160a060020a03191633600160a060020a03161790555b600681905560006005555b505b610982806100576000396000f300606060405236156100a95763ffffffff60e060020a6000350416630e576cde81146100ab57806318160ddd146100d95780634191c417146100fb57806351b754161461012957806370a082311461014b57806379adf6b4146101795780637d27d66c146102385780638da5cb5b14610259578063a9059cbb14610285578063b921e163146102b8578063c3c5a547146102cd578063f2fde38b146102fd578063fa0b5e551461031b575bfe5b34156100b357fe5b6100c7600160a060020a036004351661033c565b60408051918252519081900360200190f35b34156100e157fe5b6100c761035b565b60408051918252519081900360200190f35b341561010357fe5b6100c7600160a060020a0360043516610361565b60408051918252519081900360200190f35b341561013157fe5b6100c7610380565b60408051918252519081900360200190f35b341561015357fe5b6100c7600160a060020a0360043516610386565b60408051918252519081900360200190f35b341561018157fe5b6101896103a3565b6040518080602001806020018381038352858181518152602001915080519060200190602002808383600083146101db575b8051825260208311156101db57601f1990920191602091820191016101bb565b5050509190910184810383528551815285516020918201925081870191028083838215610223575b80518252602083111561022357601f199092019160209182019101610203565b50505090500194505050505060405180910390f35b341561024057fe5b610257600160a060020a0360043516602435610545565b005b341561026157fe5b6102696105fe565b60408051600160a060020a039092168252519081900360200190f35b341561028d57fe5b6102a4600160a060020a036004351660243561060d565b604080519115158252519081900360200190f35b34156102c057fe5b6102576004356106d4565b005b34156102d557fe5b6102a4600160a060020a036004351661070b565b604080519115158252519081900360200190f35b341561030557fe5b610257600160a060020a036004351661077e565b005b341561032357fe5b610257600160a060020a03600435166024356107ca565b005b600160a060020a0381166000908152600460205260409020545b919050565b60065481565b600160a060020a0381166000908152600360205260409020545b919050565b60055481565b60006103918261033c565b61039a83610361565b0190505b919050565b6103ab6108e7565b6103b36108e7565b6103bb6108e7565b6103c36108e7565b60015460009081908190819033600160a060020a039081169116146103e85760006000fd5b6002546040518059106103f85750595b908082528060200260200182016040525b506002546040519197509080591061041e5750595b908082528060200260200182016040525b50945060009350600092505b6002548310156104f757600280548490811061045357fe5b906000526020600020900160005b9054600160a060020a036101009290920a90041660008181526004602052604090205487519193509150829087908590811061049957fe5b600160a060020a03909216602092830290910190910152845181908690859081106104c057fe5b6020908102909101810191909152600160a060020a038316600090815260049091526040812055928301925b60019092019161043b565b6005805485900390556040805185815290517f8e4f50b10fa56c381c5b16ab54b5e2d6d78318ded48bab6031e369cca3ac61029181900360200190a18585975097505b5b5050505050509091565b60015433600160a060020a039081169116146105615760006000fd5b61056a8261070b565b15156105765760006000fd5b600554610589908263ffffffff6108b616565b60065410156105985760006000fd5b600160a060020a03821660008181526003602090815260409182902080548501905560058054850190558151928352820183905280517f8b8fa9bb5cb887419529fc94b0392d7c35aa8919218a4af83740cf81117e64869281900390910190a15b5b5050565b600154600160a060020a031681565b600160a060020a033316600090815260036020526040812054610636908363ffffffff6108d016565b600160a060020a03338116600090815260036020908152604080832094909455918616815260049091522054610672908363ffffffff6108b616565b600160a060020a038085166000818152600460209081526040918290209490945580518681529051919333909316927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef92918290030190a35060015b92915050565b60015433600160a060020a039081169116146106f05760006000fd5b600654610703908263ffffffff6108b616565b6006555b5b50565b6000805b6002548110156107735782600160a060020a031660028281548110151561073257fe5b906000526020600020900160005b9054906101000a9004600160a060020a0316600160a060020a0316141561076a5760019150610778565b5b60010161070f565b600091505b50919050565b60015433600160a060020a0390811691161461079a5760006000fd5b600160a060020a038116156107075760018054600160a060020a031916600160a060020a0383161790555b5b5b50565b60015433600160a060020a039081169116146107e65760006000fd5b6107ef8261070b565b156107fa5760006000fd5b60055461080d908263ffffffff6108b616565b600654101561081c5760006000fd5b600280546001810161082e838261090b565b916000526020600020900160005b8154600160a060020a038087166101009390930a8381029102199091161790915560008181526003602090815260409182902085905560058054860190558151928352820184905280517fd75b88a9203b17f9356ca063241beac16a25d5a46f485b378c2c229e864bdd4d9350918290030190a15b5b5050565b6000828201838110156108c557fe5b8091505b5092915050565b6000828211156108dc57fe5b508082035b92915050565b60408051602081019091526000815290565b60408051602081019091526000815290565b81548183558181151161092f5760008381526020902061092f918101908301610935565b5b505050565b61095391905b8082111561094f576000815560010161093b565b5090565b905600a165627a7a72305820c5cbdfb669e9b629564c4ecc53d4a47e1ece5cf9e56a673f7c24f3c322f481160029",
+  "networks": {
+    "1500755235673": {
+      "events": {
+        "0xd75b88a9203b17f9356ca063241beac16a25d5a46f485b378c2c229e864bdd4d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "initialCredit",
+              "type": "uint256"
+            }
+          ],
+          "name": "NewUser",
+          "type": "event"
+        },
+        "0x8b8fa9bb5cb887419529fc94b0392d7c35aa8919218a4af83740cf81117e6486": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "creditExtension",
+              "type": "uint256"
+            }
+          ],
+          "name": "UserCreditIncrease",
+          "type": "event"
+        },
+        "0x8e4f50b10fa56c381c5b16ab54b5e2d6d78318ded48bab6031e369cca3ac6102": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "totalAmountReconciled",
+              "type": "uint256"
+            }
+          ],
+          "name": "ReconciledAccounts",
+          "type": "event"
+        },
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x8d50ef501588aaddab8f9878f871f9f701d825e0",
+      "updated_at": 1500756153947
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1500756153947
+}
